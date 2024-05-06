@@ -8,10 +8,14 @@ import javafx.scene.layout.RowConstraints;
 import org.nice.pokedexxfx.components.Body;
 import org.nice.pokedexxfx.components.Footer;
 import org.nice.pokedexxfx.components.Header;
+import org.nice.pokedexxfx.services.PokemonService;
 
 public class App extends GridPane {
 
     public App() {
+
+        PokemonService.init();
+
         var header = new Header();
         var body = new Body();
         var footer = new Footer();
