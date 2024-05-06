@@ -1,0 +1,12 @@
+* {
+/*    Custom color variables*/
+    -brand-color: red;
+}
+
+.footer, .header{
+    -fx-background-color: -brand-color;
+    -fx-padding: 10;
+    -fx-alignment: center-left;
+    -fx-font-size: 18;
+}
+
