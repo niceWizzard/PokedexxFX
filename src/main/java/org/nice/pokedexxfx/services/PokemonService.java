@@ -1,5 +1,8 @@
 package org.nice.pokedexxfx.services;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.nice.pokedexxfx.Utils;
@@ -19,6 +22,8 @@ public class PokemonService {
     }
 
     ArrayList<PokemonModel> pokemonList = new ArrayList<>();
+
+    public ObservableList<PokemonModel> filteredPokemonList;
 
     private BehaviorSubject<PokemonModel> currentPokemon;
 
@@ -44,19 +49,18 @@ public class PokemonService {
         return pokemonList;
     }
 
-    public List<PokemonModel> filterPokemons(List<PokemonType> filter, Optional<String> search) {
-        return pokemonList
-                .stream().filter(pokemon -> {
+    public SortedList<PokemonModel> filterPokemons(List<PokemonType> filter, Optional<String> search) {
+        return filteredPokemonList
+                .filtered(pokemon -> {
                     var appearedOnSearch = search
                             .map(v -> pokemon.name().toLowerCase().contains(v.toLowerCase()))
                             .orElse(true);
                     return appearedOnSearch && filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name()));
                 })
-                .sorted(Comparator.comparingInt(PokemonModel::id))
-                .toList();
+                .sorted(Comparator.comparingInt(PokemonModel::id));
     }
 
-    public List<PokemonModel> filterPokemons(List<PokemonType> filter) {
+    public SortedList<PokemonModel> filterPokemons(List<PokemonType> filter) {
         return filterPokemons(filter, Optional.empty());
     }
 
@@ -72,6 +76,7 @@ public class PokemonService {
     private PokemonService() {
         loadFromFile();
         System.out.println("SIZE " + pokemonList.size());
+        filteredPokemonList = FXCollections.observableArrayList(pokemonList);
         currentPokemon = BehaviorSubject.create( pokemonList.get(0));
     }
 
