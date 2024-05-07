@@ -1,13 +1,12 @@
 package org.nice.pokedexxfx;
 
-import javafx.scene.Parent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import org.nice.pokedexxfx.components.Body;
 import org.nice.pokedexxfx.components.Footer;
-import org.nice.pokedexxfx.components.Header;
+import org.nice.pokedexxfx.components.header.Header;
 import org.nice.pokedexxfx.services.PokemonService;
 
 public class App extends GridPane {
