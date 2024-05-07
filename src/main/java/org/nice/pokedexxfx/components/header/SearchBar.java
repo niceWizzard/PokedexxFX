@@ -14,12 +14,13 @@ public class SearchBar extends HBox {
     public SearchBar() {
         var field = new TextField();
         field.setPromptText("Search pokemons...");
-        var searchBtn = new Button("Search");
+        var searchBtn = new Button("🔍");
         getChildren().addAll(field, searchBtn);
         setAlignment(Pos.CENTER_LEFT);
         setSpacing(6);
         setHgrow(field, Priority.ALWAYS);
-        searchBtn.setOnAction(e -> {});
+        searchBtn.setOnAction(e -> {
+        });
         PublishSubject<String> debounce = PublishSubject.create();
         debounce.debounce(500, TimeUnit.MILLISECONDS).subscribe(this::onSubmit);
         field.textProperty().addListener((observable, oldValue, newValue) -> {
