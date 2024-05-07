@@ -1,10 +1,19 @@
 package org.nice.pokedexxfx.components;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import org.nice.pokedexxfx.Utils;
 
 public class Footer extends HBox {
     public Footer() {
-        getChildren().add(new Text("Footer"));
+        var pokeball = new ImageView(Utils.getImage("/images/items/4.png"));
+        pokeball.setFitHeight(32);
+        pokeball.setFitWidth(32);
+        getChildren().addAll(
+                pokeball,
+                new Text("Pokedexx")
+        );
     }
 }

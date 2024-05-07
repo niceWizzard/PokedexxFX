@@ -14,7 +14,7 @@ public class Body extends GridPane {
         var pokemonTabs = new PokemonTabs();
 
         var c1 = new ColumnConstraints();
-        c1.setPercentWidth(50);
+        c1.setPercentWidth(40);
         var c2 = new ColumnConstraints();
         c1.setHgrow(Priority.ALWAYS);
         c2.setHgrow(Priority.ALWAYS);
