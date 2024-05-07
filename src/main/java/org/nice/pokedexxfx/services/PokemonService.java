@@ -49,19 +49,22 @@ public class PokemonService {
         return pokemonList;
     }
 
-    public SortedList<PokemonModel> filterPokemons(List<PokemonType> filter, Optional<String> search) {
-        return filteredPokemonList
-                .filtered(pokemon -> {
+    public void filterPokemons(List<PokemonType> filter, Optional<String> search) {
+        filteredPokemonList.setAll(
+                pokemonList
+                .stream().filter(pokemon -> {
                     var appearedOnSearch = search
                             .map(v -> pokemon.name().toLowerCase().contains(v.toLowerCase()))
                             .orElse(true);
                     return appearedOnSearch && filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name()));
                 })
-                .sorted(Comparator.comparingInt(PokemonModel::id));
+                .sorted(Comparator.comparingInt(PokemonModel::id))
+                .toList()
+        );
     }
 
-    public SortedList<PokemonModel> filterPokemons(List<PokemonType> filter) {
-        return filterPokemons(filter, Optional.empty());
+    public void filterPokemons(List<PokemonType> filter) {
+        filterPokemons(filter, Optional.empty());
     }
 
     public Optional<PokemonModel> getPokemon(int id) {
