@@ -22,9 +22,13 @@ public class PokemonList extends ScrollPane  {
 
         var listView = new DynamicVBox<>(
             PokemonService.getInstance().filteredPokemonList,
-            v -> String.valueOf(v.id()),
-            v -> {
-                return new Text(v.name());
+            pokemon -> String.valueOf(pokemon.id()),
+            pokemon -> {
+                var t = new Text(pokemon.name());
+                t.setOnMouseClicked(_ -> {
+                    PokemonService.getInstance().setCurrentPokemon(pokemon);
+                });
+                return t;
             },
             new Text("Empty list")
         );
