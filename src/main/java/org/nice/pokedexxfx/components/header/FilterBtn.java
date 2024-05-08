@@ -13,6 +13,7 @@ import java.util.List;
 public class FilterBtn extends MenuBar {
     public FilterBtn() {
         Menu menu = new Menu("Filter");
+        menu.setStyle("-fx-font-size: 12px;");
         var btnMap = new HashMap<String, CheckBox>();
 
         var unselectAll = new Button("Unselect All");
