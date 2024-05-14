@@ -12,9 +12,18 @@ import java.text.MessageFormat;
 public class PokemonTabs extends HBox {
     public PokemonTabs() {
         setStyle(" -fx-alignment: center;");
+        var evolutionContent = new PokemonEvolutionTabContent();
+        getChildren().add(evolutionContent);
+    }
+
+}
+
+
+class PokemonEvolutionTabContent extends  ScrollPane{
+    public PokemonEvolutionTabContent() {
         var evolutionPanel = new HBox();
-        var evolutionPanelScroll= new ScrollPane(evolutionPanel);
-        evolutionPanelScroll.setStyle("-fx-background-color: transparent; -fx-alignment: center;");
+        setContent(evolutionPanel);
+        setStyle("-fx-background-color: transparent; -fx-alignment: center;");
         evolutionPanel.setStyle("-fx-alignment: center; -fx-padding: 12px; -fx-spacing: 6px;");
         PokemonService.getInstance().onCurrentPokemon().subscribe(p -> {
             evolutionPanel.getChildren().clear();
@@ -45,11 +54,10 @@ public class PokemonTabs extends HBox {
             }
 
         });
-        getChildren().add(evolutionPanelScroll);
     }
     private VBox renderEvolutionCard(PokemonModel.EvolutionNiceData evol) {
         var card = new VBox();
-        card.setStyle("-fx-border-color: #7e7e7e; -fx-border-width: 1px; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-padding: 6px; -fx-alignment: center;");
+        card.setStyle("-fx-border-color: #a8a8a8; -fx-border-width: 1px; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-padding: 6px; -fx-alignment: center;");
         card.setPrefSize(120,120);
 
         card.getChildren().add(
