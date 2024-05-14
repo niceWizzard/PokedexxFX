@@ -1,6 +1,7 @@
 package org.nice.pokedexxfx;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -10,6 +11,10 @@ public class Utils {
 
     public static Image getImage(String resourcePath) {
         return new Image(getImagePath(resourcePath));
+    }
+
+    public static ImageView getImageView(String resourcePath) {
+        return new ImageView(getImage(resourcePath));
     }
 
 //    public static Image getImage(String resourcePath, int width, int height) {
