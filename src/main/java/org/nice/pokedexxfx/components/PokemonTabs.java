@@ -66,6 +66,11 @@ public class PokemonTabs extends HBox {
         card.getChildren().add(nameLabel);
         var condition = new Label(evol.level());
         card.getChildren().add(condition);
+
+        card.setOnMouseClicked(e -> {
+            PokemonService.getInstance().setCurrentPokemon(evol.model());
+        });
+
         return card;
     }
 }
