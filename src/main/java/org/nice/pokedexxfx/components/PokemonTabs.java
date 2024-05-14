@@ -1,12 +1,8 @@
 package org.nice.pokedexxfx.components;
 
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import org.nice.pokedexxfx.Utils;
 import org.nice.pokedexxfx.models.PokemonModel;
 import org.nice.pokedexxfx.services.PokemonService;
@@ -19,7 +15,7 @@ public class PokemonTabs extends HBox {
         var evolutionPanel = new HBox();
         var evolutionPanelScroll= new ScrollPane(evolutionPanel);
         evolutionPanelScroll.setStyle("-fx-background-color: transparent; -fx-alignment: center;");
-        evolutionPanel.setStyle("-fx-alignment: center; -fx-padding: 12px;");
+        evolutionPanel.setStyle("-fx-alignment: center; -fx-padding: 12px; -fx-spacing: 6px;");
         PokemonService.getInstance().onCurrentPokemon().subscribe(p -> {
             evolutionPanel.getChildren().clear();
             var next = p.getNextEvolution();
@@ -28,15 +24,18 @@ public class PokemonTabs extends HBox {
                 evolutionPanel.getChildren().add(renderEvolutionCard(prevPokemon));
                 evolutionPanel.getChildren().add(new Label("--->"));
             });
-            evolutionPanel.getChildren().add(renderEvolutionCard(
+            var current = renderEvolutionCard(
                     new PokemonModel.EvolutionNiceData(
                             p,"Current"
                     )
-            ));
-
+            );
+            evolutionPanel.getChildren().add(current);
+            current.setMaxHeight(140);
             if(!next.isEmpty()) {
                 var nextEvolPanel=  new FlowPane();
                 nextEvolPanel.setPrefWrapLength(480);
+                nextEvolPanel.setHgap(6);
+                nextEvolPanel.setVgap(6);
                 evolutionPanel.getChildren().add(new Label("--->"));
                 evolutionPanel.getChildren().add(nextEvolPanel);
                 next.forEach(n -> {
@@ -50,6 +49,7 @@ public class PokemonTabs extends HBox {
     }
     private VBox renderEvolutionCard(PokemonModel.EvolutionNiceData evol) {
         var card = new VBox();
+        card.setStyle("-fx-border-color: #7e7e7e; -fx-border-width: 1px; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-padding: 6px; -fx-alignment: center;");
         card.setPrefSize(120,120);
 
         card.getChildren().add(
