@@ -25,7 +25,7 @@ public class PokemonList extends ScrollPane  {
                 });
                 return t;
             },
-            new Text("Empty list")
+            new Text("No pokemons found ;(")
         );
 
         setContent(listView);
