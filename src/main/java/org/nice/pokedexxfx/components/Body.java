@@ -1,10 +1,6 @@
 package org.nice.pokedexxfx.components;
 
-import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import org.nice.pokedexxfx.components.reusable.StatBar;
 
 public class Body extends GridPane {
     public Body() {

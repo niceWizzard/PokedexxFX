@@ -5,7 +5,6 @@ import org.nice.pokedexxfx.models.PokemonType;
 
 import org.nice.pokedexxfx.services.SearchService;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

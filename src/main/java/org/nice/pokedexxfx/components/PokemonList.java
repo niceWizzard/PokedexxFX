@@ -1,21 +1,16 @@
 package org.nice.pokedexxfx.components;
 
 import javafx.application.Platform;
-import javafx.collections.ListChangeListener;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.text.Text;
 import org.nice.pokedexxfx.components.reusable.DynamicVBox;
-import org.nice.pokedexxfx.models.PokemonModel;
 import org.nice.pokedexxfx.models.PokemonType;
 import org.nice.pokedexxfx.services.PokemonService;
 import org.nice.pokedexxfx.services.SearchService;
 import rx.Observable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 public class PokemonList extends ScrollPane  {
     public PokemonList() {

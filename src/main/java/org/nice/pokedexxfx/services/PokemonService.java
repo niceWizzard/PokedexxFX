@@ -2,7 +2,6 @@ package org.nice.pokedexxfx.services;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.nice.pokedexxfx.Utils;

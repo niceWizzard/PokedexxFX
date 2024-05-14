@@ -17,9 +17,7 @@ public class Utils {
         return new ImageView(getImage(resourcePath));
     }
 
-//    public static Image getImage(String resourcePath, int width, int height) {
-//        return resizeImage(getImage(resourcePath), width, height);
-//    }
+
 
     public static String escapeRegex(String s) {
         String regexChars = "([\\\\.^$|?*+()\\[{])";
@@ -28,10 +26,6 @@ public class Utils {
         return s.replaceAll(regexChars, "\\\\$1");
     }
 
-//    public static ImageIcon resizeImage(ImageIcon orig, int width, int height) {
-//        var scaled = orig.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-//        return new ImageIcon(scaled);
-//    }
 
     public static String getImagePath(String resourcePath) {
         try {

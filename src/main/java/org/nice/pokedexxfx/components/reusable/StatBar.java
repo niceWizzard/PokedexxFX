@@ -3,11 +3,8 @@ package org.nice.pokedexxfx.components.reusable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-
-import java.text.MessageFormat;
 
 
 public class StatBar extends HBox {
