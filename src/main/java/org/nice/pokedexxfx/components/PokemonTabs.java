@@ -2,22 +2,87 @@ package org.nice.pokedexxfx.components;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+
 import org.nice.pokedexxfx.Utils;
+import org.nice.pokedexxfx.components.reusable.StatBar;
 import org.nice.pokedexxfx.models.PokemonModel;
 import org.nice.pokedexxfx.services.PokemonService;
 
 import java.text.MessageFormat;
 
-public class PokemonTabs extends HBox {
+public class PokemonTabs extends HBox{
     public PokemonTabs() {
         setStyle(" -fx-alignment: center;");
         var evolutionContent = new PokemonEvolutionTabContent();
-        getChildren().add(evolutionContent);
-    }
+        var statsContent = new PokemonStatTabContent();
+        var descriptionContent = new PokemonDescriptionTabContent();
 
+        TabPane triunePane = new TabPane();
+        triunePane.setStyle("-fx-background-color: transparent; -fx-alignment: center;");
+
+        Tab evolutionTab = new Tab();
+        evolutionTab.setText("Evolution");
+        evolutionTab.setContent(evolutionContent);
+
+        Tab descriptionTab = new Tab();
+        descriptionTab.setText("Description");
+        descriptionTab.setContent(descriptionContent);
+
+        Tab statsTab = new Tab();
+        statsTab.setText("Stats");
+        statsTab.setContent(statsContent);
+
+        triunePane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+        triunePane.getTabs().add(descriptionTab);
+        triunePane.getTabs().add(evolutionTab);
+        triunePane.getTabs().add(statsTab);
+        getChildren().add(triunePane);
+
+    }
 }
 
+class PokemonDescriptionTabContent extends HBox{
+    public PokemonDescriptionTabContent(){
+        var descriptionPanel = new HBox();
+        getChildren().add(descriptionPanel);
+        setStyle("-fx-font-family: Verdana");
+
+        PokemonService.getInstance().onCurrentPokemon().subscribe(p -> {
+            descriptionPanel.getChildren().clear();
+            var descriptionText = new Label();
+            descriptionText.setText(p.description());
+            descriptionPanel.getChildren().add(descriptionText);
+        });
+    }
+}
+
+class PokemonStatTabContent extends HBox{
+    
+    int maxStat = 300;
+
+    public PokemonStatTabContent(){
+        var statsPanel = new HBox();
+        getChildren().add(statsPanel);
+        setStyle("-fx-alignment: center");
+
+        PokemonService.getInstance().onCurrentPokemon().subscribe(p -> {
+            statsPanel.getChildren().clear();
+            if(p.base().isPresent()){
+                statsPanel.getChildren().add(new StatBar("HP", p.base().get().HP(), maxStat, Color.web("0xFFDF6D")));
+                statsPanel.getChildren().add(new StatBar("ATK", p.base().get().Attack(), maxStat, Color.web("0xE46666")));
+                statsPanel.getChildren().add(new StatBar("DEF", p.base().get().Defense(), maxStat, Color.web("0x7480ED")));
+                statsPanel.getChildren().add(new StatBar("SpA", p.base().get().SpAttack(), maxStat, Color.web("0xF2A6A6")));
+                statsPanel.getChildren().add(new StatBar("SpD", p.base().get().SpDefense(), maxStat, Color.web("0x7DA6CC")));
+                statsPanel.getChildren().add(new StatBar("SPD", p.base().get().Speed(), maxStat, Color.web("0x796CC9")));
+            }
+        });
+    }
+}
 
 class PokemonEvolutionTabContent extends  ScrollPane{
     public PokemonEvolutionTabContent() {
