@@ -42,6 +42,8 @@ public class PokemonTabs extends HBox{
         triunePane.getTabs().add(descriptionTab);
         triunePane.getTabs().add(evolutionTab);
         triunePane.getTabs().add(statsTab);
+        setHgrow(triunePane, Priority.ALWAYS);
+        setSpacing(20);
         getChildren().add(triunePane);
 
     }
@@ -69,6 +71,7 @@ class PokemonStatTabContent extends VBox{
 
     public PokemonStatTabContent(){
         var statsPanel = new VBox();
+        statsPanel.setSpacing(5);
         getChildren().add(statsPanel);
         setStyle("-fx-alignment: center");
 
