@@ -27,6 +27,7 @@ public class StatBar extends GridPane {
 
         var hexColor = fillColor.toString().replace("0x", "#");
         var statName = new Label(statLabel);
+        statName.setStyle("-fx-text-fill: white;");
         var statNameWrapper = new HBox(statName);
         statNameWrapper.setStyle(
                 "-fx-font-family: Arial; -fx-alignment: center;-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-alignment: center;  -fx-padding: 12px; -fx-background-radius: 6px;" +
