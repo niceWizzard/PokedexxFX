@@ -18,7 +18,11 @@ public class Main extends Application {
         stage.setMinHeight(720);
         stage.setMinWidth(1280);
         stage.setMaximized(true);
+        stage.getIcons().add(
+                Utils.getImage("/images/items/4.png")
+        );
         stage.show();
+
     }
 
     public static void main(String[] args) {
