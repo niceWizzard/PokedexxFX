@@ -7,13 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 
 import java.util.List;
 
@@ -23,15 +21,16 @@ import org.nice.pokedexxfx.services.PokemonService;
 
 public class PokemonDetails extends GridPane {
 
-    String Name, Height, Weight, Species, Gender;
+    String Name, Height, Weight, Species, Gender, type1, type2;
     int ID;
     List<String> Type;
     List<Ability> Ability;
     String zeros = "00";
 
-    Label pokemonID, pokemonName, pokemonSpecies, pokeH, pokeW, pokeG, pokeA, type1Label, type2Label;
+    Label pokemonID, pokemonName, pokemonSpecies, pokeH, pokeW, pokeG, pokeA, label1, label2;
     ImageView pokeImageView;
     Image image;
+    HBox pokeType1, pokeType2;
 
     public PokemonDetails() {
 
@@ -40,12 +39,10 @@ public class PokemonDetails extends GridPane {
             if (pokemonName != null) {
                 pokemonName.setText(Name);
             }
-
             Species = p.species();
             if (pokemonSpecies != null) {
                 pokemonSpecies.setText(Species);
             }
-
             ID = p.id();
             if (ID < 10) {
                 zeros = "00";
@@ -86,6 +83,27 @@ public class PokemonDetails extends GridPane {
             if (pokeImageView != null) {
                 pokeImageView.setImage(image);
             }
+            // all about type
+            Type = p.type();
+            type1 = Type.get(0);
+            if (label1 != null) {
+                label1.setText(type1);
+                pokeType1
+                        .setStyle(
+                                "-fx-background-color: " + "-" + type1 + ";"
+                                        + "-fx-padding: 5px; -fx-background-radius: 10px;");
+            }
+
+            type2 = Type.size() > 1 ? Type.get(1) : null;
+
+            if (label2 != null) {
+                label2.setText(type2);
+                pokeType2
+                        .setStyle(
+                                "-fx-background-color: " + "-" + type2 + ";"
+                                        + "-fx-padding: 5px; -fx-background-radius: 10px;");
+            }
+
         });
 
         // Image Section
@@ -144,21 +162,31 @@ public class PokemonDetails extends GridPane {
         pokeA.setFont(Font.font("Courier", 16));
         pokeStats.getChildren().add(pokeA);
 
-        // Type Section
-        // HBox typePanel = new HBox();
-        // typePanel.setSpacing(10);
-        // typePanel.setPadding(new Insets(10));
+        // TODO: Type Section
+        var typePanel = new HBox();
+        typePanel.setSpacing(5);
+        label1 = new Label(type1);
+        label1.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        label1.setTextFill(Color.WHITE);
+        pokeType1 = new HBox(label1);
+        pokeType1
+                .setStyle(
+                        "-fx-background-color: " + "-" + type1 + ";"
+                                + "-fx-padding: 5px; -fx-background-radius: 10px;");
+        typePanel.getChildren().add(pokeType1);
 
-        // type1Label = new Label(Type.get(0));
-        // type1Label.setFont(Font.font("Arial", 14));
-        // type1Label.setTextFill(Color.WHITE);
-
-        // type2Label = new Label();
-        // if (Type.size() > 1) {
-        // type2Label.setText(Type.get(1));
-        // type2Label.setFont(Font.font("Arial", 14));
-        // type2Label.setTextFill(Color.WHITE);
-        // }
+        if (type2 != null) {
+            label2 = new Label(type2);
+            label2.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+            label2.setTextFill(Color.WHITE);
+            pokeType2 = new HBox(label2);
+            pokeType2
+                    .setStyle(
+                            "-fx-background-color: " + "-" + type2 + ";"
+                                    + "-fx-padding: 5px; -fx-background-radius: 10px;");
+            typePanel.getChildren().add(pokeType2);
+        }
+        pokeBasic.getChildren().add(typePanel);
 
         // Format
         VBox rightSide = new VBox();

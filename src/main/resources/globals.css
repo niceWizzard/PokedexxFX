@@ -28,4 +28,5 @@
   -fx-padding: 10;
   -fx-alignment: center-left;
   -fx-font-size: 18;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 5);
 }

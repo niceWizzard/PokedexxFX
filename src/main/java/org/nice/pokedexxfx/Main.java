@@ -12,8 +12,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Scene scene = new Scene(new App(), 320, 240);
         scene.getStylesheets().add(
-                Objects.requireNonNull( getClass().getResource("/globals.css").toExternalForm())
-        );
+                Objects.requireNonNull(getClass().getResource("/globals.css").toExternalForm()));
         stage.setTitle("Pokedexx");
         stage.setScene(scene);
         stage.setMinHeight(720);
