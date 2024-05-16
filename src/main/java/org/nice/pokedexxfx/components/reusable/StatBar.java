@@ -18,7 +18,7 @@ public class StatBar extends GridPane {
         c2.setHgrow(Priority.ALWAYS);
         c2.setHalignment(HPos.CENTER);
         c3.setPercentWidth(5);
-
+        r1.setVgrow(Priority.ALWAYS);
 
         setVgap(12);
         setHgap(12);
@@ -39,6 +39,7 @@ public class StatBar extends GridPane {
         pb.setStyle(
                 "-fx-accent: " + hexColor + ";"
         );
+        pb.setMaxHeight(Double.MAX_VALUE);
         pb.getStyleClass().add("progress-bar");
         pb.setMaxWidth(1280);
 
