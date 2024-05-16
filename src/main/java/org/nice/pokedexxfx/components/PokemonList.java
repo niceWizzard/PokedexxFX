@@ -73,6 +73,7 @@ public class PokemonList extends ScrollPane {
                 new Text("No pokemons found ;("));
 
         setContent(listView);
+        setFitToWidth(true);
         var service = SearchService.getInstance();
 
         Observable.combineLatest(service.onSearchStringChange(), service.onTypeFilterChange(), List::of)
