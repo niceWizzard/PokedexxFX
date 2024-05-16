@@ -96,7 +96,7 @@ public class PokemonDetails extends GridPane {
         HBox typePanel = new HBox(5);
         pokeType1 = new HBox(typeLabel1);
         typePanel.getChildren().add(pokeType1);
-        if (type2 != null) {
+        if (type2 == null) {
             pokeType2 = new HBox(typeLabel2);
             typePanel.getChildren().add(pokeType2);
         }
@@ -149,6 +149,9 @@ public class PokemonDetails extends GridPane {
             typeLabel2.setText(type2);
             pokeType2.setStyle(
                     "-fx-background-color: " + "-" + type2 + "; -fx-padding: 5px; -fx-background-radius: 10px;");
+        } else {
+            typeLabel2.setText("");
+            pokeType2.setStyle("-fx-background-color: transparent;");
         }
     }
 
