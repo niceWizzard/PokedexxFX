@@ -5,6 +5,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -12,6 +13,8 @@ import javafx.scene.text.Text;
 import org.nice.pokedexxfx.Utils;
 import org.nice.pokedexxfx.components.reusable.StatBar;
 import org.nice.pokedexxfx.models.PokemonModel;
+import org.nice.pokedexxfx.models.PokemonModel.Image;
+import org.nice.pokedexxfx.services.PokemonImage;
 import org.nice.pokedexxfx.services.PokemonService;
 
 import java.text.MessageFormat;
@@ -64,8 +67,8 @@ class PokemonStatTabContent extends VBox{
                     new StatBar("HP", p.base().get().HP(), maxStat, Color.web("0xFFDF6D")),
                     new StatBar("ATK", p.base().get().Attack(), maxStat, Color.web("0xE46666")),
                     new StatBar("DEF", p.base().get().Defense(), maxStat, Color.web("0x7480ED")),
-                    new StatBar("SpA", p.base().get().SpAttack(), maxStat, Color.web("0xF2A6A6")),
-                    new StatBar("SpD", p.base().get().SpDefense(), maxStat, Color.web("0x7DA6CC")),
+                    new StatBar("Sp. A", p.base().get().SpAttack(), maxStat, Color.web("0xF2A6A6")),
+                    new StatBar("Sp. D", p.base().get().SpDefense(), maxStat, Color.web("0x7DA6CC")),
                     new StatBar("SPD", p.base().get().Speed(), maxStat, Color.web("0x796CC9"))
                 );
             }
@@ -114,8 +117,13 @@ class PokemonEvolutionTabContent extends  ScrollPane{
         card.setStyle("-fx-border-color: #a8a8a8; -fx-border-width: 1px; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-padding: 6px; -fx-alignment: center;");
         card.setPrefSize(120,120);
 
+        ImageView resizedImage = Utils.getImageView(evol.model().image().thumbnail());
+        resizedImage.setFitHeight(100);
+        resizedImage.setFitWidth(100);
+        resizedImage.setPreserveRatio(true);
+
         card.getChildren().add(
-                Utils.getImageView(evol.model().image().thumbnail())
+            resizedImage       
         );
         var nameLabel = new Label(
                 MessageFormat.format(
