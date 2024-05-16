@@ -100,16 +100,11 @@ class PokemonEvolutionTabContent extends  ScrollPane{
             evolutionPanel.getChildren().add(current);
             current.setMaxHeight(140);
             if(!next.isEmpty()) {
-                var nextEvolPanel=  new FlowPane();
-                nextEvolPanel.setStyle(" -fx-alignment: center-left;");
-                nextEvolPanel.setPrefWrapLength(480);
-                nextEvolPanel.setHgap(6);
-                nextEvolPanel.setVgap(6);
+                setStyle(" -fx-alignment: center-left;");
                 evolutionPanel.getChildren().add(new Label("--->"));
-                evolutionPanel.getChildren().add(nextEvolPanel);
                 next.forEach(n -> {
                     var card = renderEvolutionCard(n);
-                    nextEvolPanel.getChildren().add(card);
+                    evolutionPanel.getChildren().add(card);
                 });
             }
 
