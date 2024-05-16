@@ -7,11 +7,10 @@ import org.nice.pokedexxfx.Utils;
 public class Footer extends HBox {
     public Footer() {
         var pokeball = Utils.getImageView("/images/items/4.png");
-        pokeball.setFitHeight(32);
+        pokeball.setFitHeight(25);
         pokeball.setFitWidth(32);
         getChildren().addAll(
                 pokeball,
-                new Text("Pokedexx")
-        );
+                new Text("Pokedexx"));
     }
 }

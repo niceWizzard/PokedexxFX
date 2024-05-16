@@ -26,9 +26,9 @@ public class App extends GridPane {
         var headerRow = new RowConstraints();
         var bodyRow = new RowConstraints();
         var footerRow = new RowConstraints();
-        headerRow.setPercentHeight(10);
+        headerRow.setPercentHeight(12);
         bodyRow.setPercentHeight(80);
-        footerRow.setPercentHeight(10);
+        footerRow.setPercentHeight(8);
 
         getRowConstraints().addAll(headerRow, bodyRow, footerRow);
         var colConstraint = new ColumnConstraints();
