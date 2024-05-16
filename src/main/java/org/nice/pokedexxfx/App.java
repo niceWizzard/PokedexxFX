@@ -14,6 +14,7 @@ public class App extends GridPane {
     public App() {
 
         PokemonService.init();
+        this.setStyle("-fx-background-color: white;");
 
         var header = new Header();
         var body = new Body();
@@ -21,7 +22,6 @@ public class App extends GridPane {
         header.getStyleClass().add("header");
         body.getStyleClass().add("body");
         footer.getStyleClass().add("footer");
-
 
         var headerRow = new RowConstraints();
         var bodyRow = new RowConstraints();
@@ -36,9 +36,9 @@ public class App extends GridPane {
         colConstraint.setHgrow(Priority.ALWAYS);
         getColumnConstraints().add(colConstraint);
 
-        add(header,0,0);
-        add(body,0,1);
-        add(footer,0,2);
+        add(header, 0, 0);
+        add(body, 0, 1);
+        add(footer, 0, 2);
 
     }
 }
