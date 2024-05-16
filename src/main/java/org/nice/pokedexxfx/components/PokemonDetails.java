@@ -96,15 +96,8 @@ public class PokemonDetails extends GridPane {
         HBox typePanel = new HBox(5);
         pokeType1 = new HBox(typeLabel1);
         typePanel.getChildren().add(pokeType1);
-<<<<<<< HEAD
-        if (type2 == null) {
-            pokeType2 = new HBox(typeLabel2);
-            typePanel.getChildren().add(pokeType2);
-        }
-=======
         pokeType2 = new HBox(typeLabel2);
         typePanel.getChildren().add(pokeType2);
->>>>>>> 63e001bbe60779355d646370cb6d1d7b48285c8b
         pokeBasic.getChildren().add(typePanel);
 
         VBox rightSide = new VBox(10, pokeBasic, pokeStats);
@@ -156,12 +149,7 @@ public class PokemonDetails extends GridPane {
             pokeType2.setStyle(
                     "-fx-background-color: " + "-" + type2 + "; -fx-padding: 5px; -fx-background-radius: 10px;");
         } else {
-<<<<<<< HEAD
-            typeLabel2.setText("");
-            pokeType2.setStyle("-fx-background-color: transparent;");
-=======
             pokeType2.setOpacity(0);
->>>>>>> 63e001bbe60779355d646370cb6d1d7b48285c8b
         }
     }
 

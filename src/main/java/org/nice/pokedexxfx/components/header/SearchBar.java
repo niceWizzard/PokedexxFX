@@ -14,7 +14,11 @@ public class SearchBar extends HBox {
     public SearchBar() {
         var field = new TextField();
         field.setPromptText("Search pokemons...");
+        field.setStyle(
+                "-fx-background-radius: 10;-fx-focus-color: transparent; -fx-faint-focus-color: transparent;-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 5);");
         var searchBtn = new Button("🔍");
+        searchBtn.setStyle(
+                "-fx-background-color: white; -fx-background-radius: 100;-fx-focus-color: transparent; -fx-faint-focus-color: transparent;-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 5);");
         getChildren().addAll(field, searchBtn);
         setAlignment(Pos.CENTER_LEFT);
         setSpacing(6);

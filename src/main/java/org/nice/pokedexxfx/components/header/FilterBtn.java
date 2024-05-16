@@ -11,6 +11,8 @@ import java.util.List;
 
 public class FilterBtn extends MenuBar {
     public FilterBtn() {
+        setStyle(
+                "-fx-background-color: white; -fx-background-radius: 10;-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 5);");
         Menu menu = new Menu("Filter");
         menu.setStyle("-fx-font-size: 12px;");
         var btnMap = new HashMap<String, CheckBox>();
@@ -30,17 +32,16 @@ public class FilterBtn extends MenuBar {
             btnMap.put(value.name(), checkbox);
             checkbox.selectedProperty().addListener(v -> {
                 var list = new ArrayList<>(SearchService.getInstance().currentTypeFilters());
-                if(checkbox.isSelected()) {
+                if (checkbox.isSelected()) {
                     list.add(value);
-                    if(list.size() > 2) {
+                    if (list.size() > 2) {
                         list.removeFirst();
                     }
                 } else {
                     list.remove(value);
                 }
                 SearchService.getInstance().setTypeFilters(
-                        list
-                );
+                        list);
             });
         }
         getMenus().add(menu);
