@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -99,6 +100,12 @@ public class PokemonDetails extends GridPane {
         pokeType2 = new HBox(typeLabel2);
         typePanel.getChildren().add(pokeType2);
         pokeBasic.getChildren().add(typePanel);
+
+        ColumnConstraints col1 = new ColumnConstraints();
+        col1.setPercentWidth(50);
+        ColumnConstraints col2 = new ColumnConstraints();
+        col2.setPercentWidth(50);
+        getColumnConstraints().addAll(col1, col2);
 
         VBox rightSide = new VBox(10, pokeBasic, pokeStats);
         VBox.setVgrow(pokeBasic, Priority.ALWAYS);

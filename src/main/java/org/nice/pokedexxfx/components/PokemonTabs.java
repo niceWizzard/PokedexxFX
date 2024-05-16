@@ -29,7 +29,8 @@ public class PokemonTabs extends HBox {
         var descriptionContent = new PokemonDescriptionTabContent();
 
         TabPane triunePane = new TabPane();
-        triunePane.setStyle("-fx-background-color: #f0f0f0; -fx-alignment: center;");
+        triunePane.setStyle(
+                "-fx-background-color: #f0f0f0; -fx-alignment: center;-fx-border-radius: 6px; -fx-background-radius: 6px; ");
 
         Tab evolutionTab = new Tab("Evolution", evolutionContent);
         Tab descriptionTab = new Tab("Description", descriptionContent);

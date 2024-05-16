@@ -18,13 +18,12 @@ public class Body extends GridPane {
 
         var r1 = new RowConstraints();
         var r2 = new RowConstraints();
-        r1.setVgrow(Priority.ALWAYS);
-        r2.setVgrow(Priority.ALWAYS);
+        r1.setPercentHeight(50);
+        r2.setPercentHeight(50);
         getRowConstraints().addAll(r1, r2);
 
         add(pokemonList, 0, 0, 1, 2);
         add(pokemonDetails, 1, 0);
         add(pokemonTabs, 1, 1);
-
     }
 }
