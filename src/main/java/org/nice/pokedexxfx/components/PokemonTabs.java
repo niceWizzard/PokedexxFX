@@ -80,7 +80,9 @@ class PokemonEvolutionTabContent extends  ScrollPane{
     public PokemonEvolutionTabContent() {
         var evolutionPanel = new HBox();
         setContent(evolutionPanel);
-        setStyle("-fx-background-color: transparent; -fx-alignment: center;");
+        setFitToHeight(true);
+        setFitToWidth(true);
+        setStyle("-fx-background-color: red; -fx-alignment: center;");
         evolutionPanel.setStyle("-fx-alignment: center; -fx-padding: 12px; -fx-spacing: 6px;");
         PokemonService.getInstance().onCurrentPokemon().subscribe(p -> {
             evolutionPanel.getChildren().clear();
@@ -99,6 +101,7 @@ class PokemonEvolutionTabContent extends  ScrollPane{
             current.setMaxHeight(140);
             if(!next.isEmpty()) {
                 var nextEvolPanel=  new FlowPane();
+                nextEvolPanel.setStyle(" -fx-alignment: center-left;");
                 nextEvolPanel.setPrefWrapLength(480);
                 nextEvolPanel.setHgap(6);
                 nextEvolPanel.setVgap(6);
@@ -115,7 +118,7 @@ class PokemonEvolutionTabContent extends  ScrollPane{
     private VBox renderEvolutionCard(PokemonModel.EvolutionNiceData evol) {
         var card = new VBox();
         card.setStyle("-fx-border-color: #a8a8a8; -fx-border-width: 1px; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-padding: 6px; -fx-alignment: center;");
-        card.setPrefSize(120,120);
+        card.setMaxSize(120,120);
 
         ImageView resizedImage = Utils.getImageView(evol.model().image().thumbnail());
         resizedImage.setFitHeight(100);
