@@ -39,6 +39,7 @@ public class StatBar extends GridPane {
         pb.setStyle(
                 "-fx-accent: " + hexColor + ";"
         );
+        pb.getStyleClass().add("progress-bar");
         pb.setMaxWidth(1280);
 
         var statValueText = new Label();

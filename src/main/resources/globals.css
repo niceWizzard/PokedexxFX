@@ -10,3 +10,6 @@
     -fx-font-size: 18;
 }
 
+.progress-bar .track {
+    -fx-background-color: transparent;
+}
