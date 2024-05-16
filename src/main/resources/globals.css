@@ -1,12 +1,32 @@
 * {
-/*    Custom color variables*/
-    -brand-color: #E46666;
+  /*    Custom color variables*/
+  -brand-color: #e46666;
+
+  -normal: #b8b892;
+  -fighting: #c56262;
+  -flying: #b19eea;
+  -poison: #aa70d8;
+  -ground: #e4bf86;
+  -rock: #a68e6a;
+  -bug: #c4cd78;
+  -ghost: #847598;
+  -steel: #8996a6;
+  -fire: #f19c6c;
+  -water: #71a2ed;
+  -grass: #80d183;
+  -electric: #ffdf6d;
+  -psychic: #ff608f;
+  -ice: #87e0e0;
+  -dragon: #6157d6;
+  -dark: #3a3531;
+  -fairy: #ffaec9;
 }
 
-.footer, .header{
-    -fx-background-color: -brand-color;
-    -fx-padding: 10;
-    -fx-alignment: center-left;
-    -fx-font-size: 18;
+.footer,
+.header {
+  -fx-background-color: -brand-color;
+  -fx-padding: 10;
+  -fx-alignment: center-left;
+  -fx-font-size: 18;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 5);
 }
-

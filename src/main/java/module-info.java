@@ -4,8 +4,9 @@ module org.nice.pokedexxfx {
     requires java.desktop;
     requires rxjava;
     requires org.json;
-
+    requires javafx.graphics;
 
     opens org.nice.pokedexxfx to javafx.fxml;
+
     exports org.nice.pokedexxfx;
 }
