@@ -6,11 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -34,14 +32,13 @@ public class PokemonList extends ScrollPane {
                 p -> String.valueOf(p.id()),
                 p -> {
                     // main container
-                    var listBox = new GridPane();
-                    listBox.setMinHeight(68);
-                    listBox.setPrefHeight(68);
-                    listBox.setMaxHeight(68);
+                    var listBox = new HBox();
+                    listBox.setSpacing(10);
+                    listBox.setAlignment(Pos.CENTER);
                     listBox.setPadding(new javafx.geometry.Insets(10));
                     listBox.setStyle(
                             "-fx-border-radius: 10;-fx-background-color: " + "-" + p.type().get(0) + ";"
-                                    + "-fx-margin: 10px; -fx-border-color: white; -fx-border: 1px; -fx-border-radius: 10px;-fx-background-radius: 10px;");
+                                    + "-fx-border-color: white; -fx-border: 3px; -fx-border-radius: 10px;-fx-background-radius: 10px;");
 
                     // id
                     var idPanel = new HBox();
@@ -54,13 +51,11 @@ public class PokemonList extends ScrollPane {
                     idLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
                     idLabel.setStyle("-fx-text-fill: " + "-" + p.type().get(0) + ";");
                     idPanel.getChildren().add(idLabel);
-                    listBox.add(idPanel, 0, 0);
 
                     // name
                     var pokeName = new Label(p.name());
                     pokeName.setFont(Font.font("Arial", FontWeight.BOLD, 20));
                     pokeName.setTextFill(Color.WHITE);
-                    listBox.add(pokeName, 1, 0);
 
                     //
                     var Psprite = new VBox();
@@ -75,7 +70,13 @@ public class PokemonList extends ScrollPane {
                     sprite.setFitHeight(50);
                     sprite.setFitWidth(50);
                     Psprite.getChildren().add(sprite);
-                    listBox.add(Psprite, 2, 0);
+
+                    // Format
+                    var leftSpace = new Region();
+                    var rightSpace = new Region();
+                    HBox.setHgrow(leftSpace, Priority.ALWAYS);
+                    HBox.setHgrow(rightSpace, Priority.ALWAYS);
+                    listBox.getChildren().addAll(idPanel, leftSpace, pokeName, rightSpace, Psprite);
 
                     listBox.setOnMouseClicked(tite -> {
                         PokemonService.getInstance().setCurrentPokemon(p);
