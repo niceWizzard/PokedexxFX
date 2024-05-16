@@ -2,24 +2,24 @@
   /*    Custom color variables*/
   -brand-color: #e46666;
 
-  -type-color-normal: #b8b892;
-  -type-color-fighting: #c56262;
-  -type-color-flying: #b19eea;
-  -type-color-poison: #aa70d8;
-  -type-color-ground: #e4bf86;
-  -type-color-rock: #a68e6a;
-  -type-color-bug: #c4cd78;
-  -type-color-ghost: #847598;
-  -type-color-steel: #8996a6;
-  -type-color-fire: #f19c6c;
-  -type-color-water: #71a2ed;
-  -type-color-grass: #80d183;
-  -type-color-electric: #ffdf6d;
-  -type-color-psychic: #ff608f;
-  -type-color-ice: #87e0e0;
-  -type-color-dragon: #6157d6;
-  -type-color-dark: #3a3531;
-  -type-color-fairy: #ffaec9;
+  -normal: #b8b892;
+  -fighting: #c56262;
+  -flying: #b19eea;
+  -poison: #aa70d8;
+  -ground: #e4bf86;
+  -rock: #a68e6a;
+  -bug: #c4cd78;
+  -ghost: #847598;
+  -steel: #8996a6;
+  -fire: #f19c6c;
+  -water: #71a2ed;
+  -grass: #80d183;
+  -electric: #ffdf6d;
+  -psychic: #ff608f;
+  -ice: #87e0e0;
+  -dragon: #6157d6;
+  -dark: #3a3531;
+  -fairy: #ffaec9;
 }
 
 .footer,

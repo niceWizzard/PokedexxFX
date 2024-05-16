@@ -33,20 +33,19 @@ public class PokemonDetails extends GridPane {
     ImageView pokeImageView;
     Image image;
 
-    private void updateLabel(Label label, String text) {
-        if (label != null) {
-            label.setText(text);
-        }
-    }
-
     public PokemonDetails() {
 
         PokemonService.getInstance().onCurrentPokemon().subscribe(p -> {
             Name = p.name();
-            updateLabel(pokemonName, Name);
+            if (pokemonName != null) {
+                pokemonName.setText(Name);
+            }
 
             Species = p.species();
-            updateLabel(pokemonSpecies, Species);
+            if (pokemonSpecies != null) {
+                pokemonSpecies.setText(Species);
+            }
+
             ID = p.id();
             if (ID < 10) {
                 zeros = "00";
@@ -59,9 +58,13 @@ public class PokemonDetails extends GridPane {
                 pokemonID.setText(zeros + ID);
             }
             Height = p.profile().height();
-            updateLabel(pokeH, Height);
+            if (pokeH != null) {
+                pokeH.setText("Height: " + Height);
+            }
             Weight = p.profile().weight();
-            updateLabel(pokeW, Weight);
+            if (pokeW != null) {
+                pokeW.setText("Weight: " + Weight);
+            }
             Gender = p.profile().gender();
             if (p.profile().gender().equals("Genderless")) {
                 Gender = "genderless";
@@ -72,7 +75,9 @@ public class PokemonDetails extends GridPane {
             } else {
                 Gender = "♂ ♀";
             }
-            updateLabel(pokeG, Gender);
+            if (pokeG != null) {
+                pokeG.setText("Gender: " + Gender);
+            }
             Ability = p.profile().ability();
             if (pokeA != null) {
                 pokeA.setText("Abilities: " + (Ability.isEmpty() ? "None" : Ability.get(0).name()));

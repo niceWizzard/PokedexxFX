@@ -27,6 +27,7 @@ public class PokemonList extends ScrollPane {
                 PokemonService.getInstance().filteredPokemonList,
                 p -> String.valueOf(p.id()),
                 p -> {
+
                     // main container
                     var listBox = new HBox();
                     listBox.setMinHeight(68);
@@ -34,14 +35,21 @@ public class PokemonList extends ScrollPane {
                     listBox.setMaxHeight(68);
                     listBox.setSpacing(10);
                     listBox.setPadding(new javafx.geometry.Insets(10));
-                    listBox.setStyle("-fx-border-radius: 10;");
+                    listBox.setStyle(
+                            "-fx-border-radius: 10;-fx-background-color: " + "-" + p.type().get(0) + ";"
+                                    + "-fx-margin: 10px");
 
                     // id
                     var idPanel = new HBox();
+                    idPanel.setStyle("-fx-background-color: #ffffff; -fx-border-radius: 5px;");
+                    idPanel.setMinSize(50, 28);
+                    idPanel.setMaxSize(50, 28);
+                    idPanel.setAlignment(javafx.geometry.Pos.CENTER);
                     var idLabel = new Label(String.valueOf(p.id()));
                     idLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-                    // TODO: set color
-                    listBox.getChildren().add(idLabel);
+                    idLabel.setStyle("-fx-text-fill: " + "-" + p.type().get(0) + ";");
+                    idPanel.getChildren().add(idLabel);
+                    listBox.getChildren().add(idPanel);
 
                     // name
                     var pokeName = new Label(p.name());
