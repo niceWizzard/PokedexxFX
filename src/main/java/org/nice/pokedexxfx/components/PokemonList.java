@@ -86,12 +86,11 @@ public class PokemonList extends ScrollPane {
                 new Text("No pokemons found ;("));
 
         setContent(listView);
+        setFitToWidth(true);
         var service = SearchService.getInstance();
 
         Observable.combineLatest(service.onSearchStringChange(), service.onTypeFilterChange(), List::of)
                 .subscribe(v -> {
-                    Platform.runLater(
-                            () -> PokemonService.getInstance().filterPokemons(List.of(), Optional.empty()));
                     var filters = (List<PokemonType>) v.get(1);
                     Platform.runLater(() -> PokemonService.getInstance().filterPokemons(filters,
                             Optional.of(v.get(0).toString())));
