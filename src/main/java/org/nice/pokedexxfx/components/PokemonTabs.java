@@ -7,6 +7,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import org.nice.pokedexxfx.Utils;
 import org.nice.pokedexxfx.components.reusable.StatBar;
@@ -50,23 +51,24 @@ class PokemonDescriptionTabContent extends HBox{
     public PokemonDescriptionTabContent(){
         var descriptionPanel = new HBox();
         getChildren().add(descriptionPanel);
-        setStyle("-fx-font-family: Verdana");
+        setStyle("-fx-font-family: Verdana; -fx-wrapping: justified");
 
         PokemonService.getInstance().onCurrentPokemon().subscribe(p -> {
             descriptionPanel.getChildren().clear();
-            var descriptionText = new Label();
+            var descriptionText = new Text();
             descriptionText.setText(p.description());
+            descriptionText.setWrappingWidth(800);
             descriptionPanel.getChildren().add(descriptionText);
         });
     }
 }
 
-class PokemonStatTabContent extends HBox{
+class PokemonStatTabContent extends VBox{
     
     int maxStat = 300;
 
     public PokemonStatTabContent(){
-        var statsPanel = new HBox();
+        var statsPanel = new VBox();
         getChildren().add(statsPanel);
         setStyle("-fx-alignment: center");
 

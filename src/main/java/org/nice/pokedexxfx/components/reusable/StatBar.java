@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 
 public class StatBar extends HBox {
     public StatBar(String statLabel, int statValue, int statMax, Color fillColor){
-        setAlignment(Pos.CENTER_LEFT);
+        setAlignment(Pos.CENTER);
         setSpacing(12);
 
         var hexColor = "#" + fillColor.toString().replace("0x", "");
