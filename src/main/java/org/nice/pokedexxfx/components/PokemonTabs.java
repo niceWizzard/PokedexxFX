@@ -64,17 +64,20 @@ class PokemonDescriptionTabContent extends HBox {
     }
 }
 
-class PokemonStatTabContent extends VBox {
+class PokemonStatTabContent extends ScrollPane {
 
     int maxStat = 300;
 
     public PokemonStatTabContent() {
-        setStyle("-fx-alignment: center;-fx-padding: 1px; -fx-spacing: 6px;");
-
+        var wrapper = new VBox();
+        setContent(wrapper);
+        setFitToWidth(true);
+        setFitToHeight(true);
+        wrapper.setStyle("-fx-alignment: center;-fx-padding: 1px; -fx-spacing: 6px;");
         PokemonService.getInstance().onCurrentPokemon().subscribe(p -> {
-            getChildren().clear();
+            wrapper.getChildren().clear();
             if (p.base().isPresent()) {
-                getChildren().addAll(
+                wrapper.getChildren().addAll(
                         new StatBar("HP", p.base().get().HP(), maxStat, Color.web("0xFFDF6D")),
                         new StatBar("ATK", p.base().get().Attack(), maxStat, Color.web("0xE46666")),
                         new StatBar("DEF", p.base().get().Defense(), maxStat, Color.web("0x7480ED")),
