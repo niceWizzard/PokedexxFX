@@ -73,7 +73,7 @@ class PokemonStatTabContent extends ScrollPane {
         setContent(wrapper);
         setFitToWidth(true);
         setFitToHeight(true);
-        wrapper.setStyle("-fx-alignment: center;-fx-padding: 1px; -fx-spacing: 6px;");
+        wrapper.setStyle("-fx-alignment: center;-fx-padding: 6px; -fx-spacing: 6px;");
         PokemonService.getInstance().onCurrentPokemon().subscribe(p -> {
             wrapper.getChildren().clear();
             if (p.base().isPresent()) {
